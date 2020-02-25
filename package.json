@@ -45,6 +45,6 @@
   "homepage": "https://github.com/Amsterdam/openstad-component-user#readme",
   "dependencies": {
     "merge": "^1.2.1",
-    "openstad-component": "git+ssh://git@github.com/Amsterdam/openstad-component.git"
+    "openstad-component": "git+ssh://git@github.com/Amsterdam/openstad-component.git#v.0.0.1"
   }
 }
