@@ -6,7 +6,7 @@ export default function(config, next) {
   next = next || function(user) {
     console.log('getUser: next not defined.');
     console.log(user);
-  }
+  };
 
   let user = config.user || sessionStorage.get('osc-user');
 
@@ -20,23 +20,23 @@ export default function(config, next) {
 
   if (!jwt) {
     // return no user
-    return next(null, {})
+    return next(null, {});
   }
 
   // fetch user
-  let url = config.api.url + '/oauth/site/' + config.siteId + '/me';
-  let headers = { 'X-Authorization': 'Bearer ' + jwt, 'Content-Type': 'application/json' };
+  let url = `${config.api.url  }/oauth/site/${  config.siteId  }/me`;
+  let headers = { 'X-Authorization': `Bearer ${  jwt}`, 'Content-Type': 'application/json' };
   fetch(url, { headers } )
     .then((response) => {
-      if (!response.ok) throw new Error('Error on fetch')
+      if (!response.ok) throw new Error('Error on fetch');
       return response.json();
     })
-    .then( json => {
-      sessionStorage.set('osc-user', json)
-      next(null, json)
+    .then( (json) => {
+      sessionStorage.set('osc-user', json);
+      next(null, json);
     })
     .catch((err) => {
-      next(err)
+      next(err);
     });
-  
+
 }
